@@ -2,17 +2,19 @@ import { useState } from 'react'
 
 const Toggle = () => {
   const [isOn, setIsOn] = useState(true);
-  // const [isToggled, setIsToggled] = useState(false);
-  
-  // useEffect(() => {
-  //   console.log('isToggled mudou para: ', isToggled)
-  // }, [isToggled]);
+  const [count, setCount] = useState(0);
 
+  const handleClick = () => {
+    setIsOn(!isOn);
+    setCount(count + 1);
+  }
+ 
   return (
     <div>
-      <button onClick={() => setIsOn(!isOn)}>
+      <button onClick={handleClick}>
         {isOn ? 'ON' : 'OFF'}
       </button>
+      <p>Você clicou {count} vezes.</p>
     </div>
   );
 };
