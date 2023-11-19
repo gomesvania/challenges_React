@@ -19,7 +19,6 @@ const ViewScreenWidth = () => {
 
   return (
     <div>
-      <h1>View Screen Width</h1>
       <p>Screen Width: {width}px</p>
     </div>
   );

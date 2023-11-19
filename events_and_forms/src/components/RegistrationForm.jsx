@@ -13,8 +13,17 @@ const RegistrationForm = () => {
     setValues({ ...values, [e.target.name]: e.target.value });
   };
 
+  const handleResetValues = () => {
+    setValues({
+      name: "",
+      email: "",
+      password: "",
+    });
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    handleResetValues();
     console.log(values);
   };
 

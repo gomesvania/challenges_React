@@ -3,6 +3,7 @@ import RegistrationForm from "./components/RegistrationForm";
 
 import DynamicForm from "./components/DynamicForm";
 import ValidationForm from "./components/ValidationForm";
+import UploaderFile from "./components/UploaderFile";
 
 function App() {
   return (
@@ -15,6 +16,9 @@ function App() {
 
       <h1>Validação Formulário</h1>
       <ValidationForm />
+
+      <h1>Upload File</h1>
+      <UploaderFile />
     </>
   );
 }

@@ -15,22 +15,38 @@ const ValidationForm = () => {
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-
     validade(name, value);
-
     setValues({ ...values, [e.target.name]: e.target.value });
-
-    setError({...error, [name]: validade(name, value)})
+    setError({ ...error, [name]: validade(name, value) });
   };
+
+  const handleResetValues = () => {
+    setValues({
+      name: "",
+      email: "",
+      password: "",
+    });
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (Object.values(error).some((err) => err === "")) {
-      console.log("Erro no formulário");
+    let validadeErrors = {};
+    Object.keys(values).forEach((key) => {
+      const errorMessage = validade(key, values[key]);
+      validadeErrors = { ...validadeErrors, [key]: errorMessage };
+    });
+
+    setError(validadeErrors);
+
+    if (Object.values(validadeErrors).some((error) => error !== "")) {
+      console.log("Formulário inválido");
+      setError(validadeErrors);
     } else {
-    console.log(values);
+      console.log("Formulário válido", values);
     }
+
+    handleResetValues();
   };
 
   const validade = (name, value) => {
@@ -51,7 +67,7 @@ const ValidationForm = () => {
         break;
 
       case "password":
-        errorMessage = value ? "" : "Senha em branco, prreencha corretamente!";
+        errorMessage = value.length >= 6 ? "" : "Senha em branco e/ou deve ter ao menos 6 caracteres, prreencha corretamente!";
         break;
 
       default:
