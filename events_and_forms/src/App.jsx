@@ -4,21 +4,25 @@ import RegistrationForm from "./components/RegistrationForm";
 import DynamicForm from "./components/DynamicForm";
 import ValidationForm from "./components/ValidationForm";
 import UploaderFile from "./components/UploaderFile";
+import MultiPartForm from "./components/MultiPartiForm";
 
 function App() {
   return (
     <>
-      <h1>Formulário de Registro</h1>
+      <h2>Formulário de Registro</h2>
       <RegistrationForm />
 
-      <h1>Formulário Dinâmico</h1>
+      <h2>Formulário Dinâmico</h2>
       <DynamicForm />
 
-      <h1>Validação Formulário</h1>
+      <h2>Validação Formulário</h2>
       <ValidationForm />
 
-      <h1>Upload File</h1>
+      <h2>Upload File</h2>
       <UploaderFile />
+
+      <h2>Formulário Múltiplas Etapas</h2>
+      <MultiPartForm />
     </>
   );
 }
