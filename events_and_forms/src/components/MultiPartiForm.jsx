@@ -1,32 +1,37 @@
 import React, { useState } from "react";
 
-import "./MultiPartForm.css";
+import "./MultiPartiForm.css";
 
-const MultiPartForm = () => {
+function MultiPartForm() {
   const [step, setStep] = useState(1);
-  const [formData, setFormData] = useState({
-    name: "",
+  const [formValues, setFormValues] = useState({
+    nome: "",
     email: "",
-    password: "",
+    senha: "",
   });
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
+  const handleChange = (event) => {
+    setFormValues({ ...formValues, [event.target.name]: event.target.value });
   };
 
-  function nextStep() {
-    if (step === 1 && formData.name === "") {
-      alert("Please fill in the name field");
-      return;
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (formValues.senha === "") {
+      alert("Por favor, preencha o campo senha antes de prosseguir.");
+    } else {
+      console.log(formValues);
     }
+  };
 
-    if (step === 2 && formData.email === "") {
-      alert("Please fill in the email field");
-      return;
+  const nextStep = () => {
+    if (step === 1 && formValues.nome === "") {
+      alert("Por favor, preencha o campo nome antes de prosseguir.");
+    } else if (step === 2 && formValues.email === "") {
+      alert("Por favor, preencha o campo email antes de prosseguir.");
+    } else {
+      setStep(step + 1);
     }
-
-    setStep(step + 1);
-  }
+  };
 
   const previousStep = () => {
     if (step > 1) {
@@ -34,79 +39,65 @@ const MultiPartForm = () => {
     }
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    if (formData.password === "") {
-      alert("Please fill in the password field");
-    } else {
-      console.log(formData);
-    }
-  };
-
   return (
-    <div
+    <form
+      onSubmit={handleSubmit}
       style={{
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
       }}
     >
-      <form onSubmit={handleSubmit}>
-        {step === 1 && (
-          <div>
-            <label htmlFor="name">Name</label>
+      {step === 1 && (
+        <div>
+          <label>
+            <p>Nome:</p>
             <input
-              type="text"
-              name="name"
-              value={formData.name}
+              name="nome"
+              value={formValues.nome}
               onChange={handleChange}
             />
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <label htmlFor="email">Email</label>
+          </label>
+        </div>
+      )}
+      {step === 2 && (
+        <div>
+          <label>
+            <p>Email:</p>
             <input
-              type="email"
               name="email"
-              value={formData.email}
+              value={formValues.email}
               onChange={handleChange}
             />
-          </div>
-        )}
-
-        {step === 3 && (
-          <div>
-            <label htmlFor="password">Password</label>
+          </label>
+        </div>
+      )}
+      {step === 3 && (
+        <div>
+          <label>
+            <p>Senha:</p>
             <input
+              name="senha"
               type="password"
-              name="password"
-              value={formData.password}
+              value={formValues.senha}
               onChange={handleChange}
             />
-          </div>
-        )}
-
-        {step > 1 && (
-          <button className="button" type="button" onClick={previousStep}>
-            Back
-          </button>
-        )}
-        {step < 3 && (
-          <button className="button" type="button" onClick={nextStep}>
-            Nextk
-          </button>
-        )}
-        {step === 3 && (
-          <button className="button" type="submit" onClick={() => setStep(step + 2)}>
-            Send
-          </button>
-        )}
-      </form>
-    </div>
+          </label>
+        </div>
+      )}
+      {step > 1 && (
+        <button type="button" onClick={previousStep} className="button">
+          Anterior
+        </button>
+      )}
+      {step < 3 && (
+        <button type="button" onClick={nextStep} className="button">
+          Próximo
+        </button>
+      )}
+      {step === 3 && <button type="submit" className="button">Enviar</button>}
+    </form>
   );
-};
+}
 
 export default MultiPartForm;
