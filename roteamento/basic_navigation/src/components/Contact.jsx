@@ -1,9 +1,17 @@
-import React from 'react'
+import React from "react";
 
 const Contact = () => {
   return (
-    <div>Contact</div>
-  )
-}
+    <div
+      style={{
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
+      Contact
+    </div>
+  );
+};
 
 export default Contact;
