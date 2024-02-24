@@ -1,0 +1,26 @@
+.theme-main {
+  display: flex !important;
+  justify-content: center;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: cornflowerblue;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+}
+
+.themelight {
+  background-color: #fff;
+  color: #000;
+}
+
+.themedark {
+  background-color: #000;
+  color: #fff;
+}
