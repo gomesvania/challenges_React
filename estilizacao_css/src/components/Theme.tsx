@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 
-import styles from "../components/theme.module.css";
+import styles from "../components/Theme.module.css";
 
 const Theme = () => {
   const [theme, setTheme] = useState("light");
@@ -10,7 +10,7 @@ const Theme = () => {
   }, [theme]);
 
   return (
-    <div className="theme-main">
+    <div className="div-button">
       <button className="button"
         onClick={() =>
           theme === "light" ? setTheme("dark") : setTheme("light")

@@ -1,18 +1,17 @@
-.theme-main {
-  display: flex !important;
+.div-button {
+  display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 .button {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: cornflowerblue;
-  color: #fff;
+  background-color: slateblue;
+  color: white;
   padding: 10px 20px;
-  border-radius: 10px;
   border: none;
-  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
 }
 
 .themelight {
